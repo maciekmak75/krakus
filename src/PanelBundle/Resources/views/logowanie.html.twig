@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Panel</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=2" />
+
+    <!-- Bootstrap -->
+    <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{{ asset('assets/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet">
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form action="{{ path('login') }}" method="post">
+              <h1>Zaloguj się</h1>
+              {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+              {% endif %}
+              <div>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Login" required="" />
+              </div>
+              <div>
+                <input type="password"  id="password" name="_password" class="form-control" placeholder="Hasło" required="" />
+              </div>
+              <input type="hidden" name="_target_path" value="/ankietyRender" />
+              <div>
+                <button type="submit" class="btn btn-success">Zaloguj</button>
+                <a href="#signup"><button type="submit" class="btn btn-warning">Zapomniałeś hasła?</button></a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><img src="{{ asset('assets/images/krakus_logo_czarne.png')}}" alt="logo" style="width: 300px;" /></h1>
+                  <p>©2016 All Rights Reserved. ZPiT AGH "Krakus"</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Resetuj hasło</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Login" required="" />
+              </div>
+
+              <div>
+                <a class="btn btn-default submit" href="{#{ path('app_dashboard') }#}">Resetuj hasło</a>
+                <a class="btn btn-default submit" href="#signin">Logowanie</a>
+
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><img class="kadry" src="{{ asset('assets/images/krakus_logo_czarne.png')}}" alt="logo" style="width: 300px;" /></h1>
+                  <p>©2016 All Rights Reserved. EC Engineering Sp. z.o.o</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

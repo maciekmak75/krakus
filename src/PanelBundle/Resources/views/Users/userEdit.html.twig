@@ -1,0 +1,259 @@
+{% extends "PanelBundle::layout.html.twig" %}
+{% block content %}
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>{{ title }} użytkownika</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <br/>
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="#"
+                              method="post">
+                            {{ form_start(form) }}
+                            <div class="form-group">
+
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="first-name">{{ form_label(form.imie) }} <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.imie) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.nazwisko) }}<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.nazwisko) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       style="padding-top:0">{{ form_label(form.plec) }}
+                                    <span class="required">*</span>
+                                    {{ form_errors(form.plec) }}
+                                </label>
+                                <div class=" col-md-6 col-sm-6 col-xs-12 ">
+                                    {{ form_widget(form.plec[0], {'attr': {'class':'flat'} }) }}
+                                    {{ form_label(form.plec[0]) }}
+                                    {{ form_widget(form.plec[1], {'attr': {'class':'flat'} }) }}
+                                    {{ form_label(form.plec[1]) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-3">{{ form_label(form.dataUrodzenia) }}  </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.dataUrodzenia) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.miejsceUrodzenia) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.miejsceUrodzenia) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.telefon) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.telefon) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.mail) }} <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.mail) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.imieOjca) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.imieOjca) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.imieMatki) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.imieMatki) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.nrDowodu) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.nrDowodu) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.pesel) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.pesel) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.nrPaszportu) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.nrPaszportu) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-3">{{ form_label(form.dataPaszport) }}  </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.dataPaszport) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.uczelnia) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.uczelnia) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.nrLegitymacji) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.nrLegitymacji) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.wydzial) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.wydzial) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.rok) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.rok) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.adres) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.adres) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.wzrost) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.wzrost) }}
+                                </div>
+                            </div>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           style="padding-top:0">{{ form_label(form.sekcja) }}
+                                        <span class="required">*</span>
+                                        {{ form_errors(form.sekcja) }}
+                                    </label>
+                                    <div class=" col-md-6 col-sm-6 col-xs-12 ">
+                                        {{ form_widget(form.sekcja[0], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.sekcja[0]) }}
+                                        {{ form_widget(form.sekcja[1], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.sekcja[1]) }}
+                                        {{ form_widget(form.sekcja[2], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.sekcja[2]) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           style="padding-top:0">{{ form_label(form.status) }}
+                                        <span class="required">*</span>
+                                        {{ form_errors(form.status) }}
+                                    </label>
+                                    <div class=" col-md-6 col-sm-6 col-xs-12 ">
+                                        {{ form_widget(form.status[0], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.status[0]) }}
+                                        {{ form_widget(form.status[1], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.status[1]) }}
+                                        {{ form_widget(form.status[2], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.status[2]) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                           style="padding-top:0">{{ form_label(form.glos) }}
+                                        <span class="required">*</span>
+                                        {{ form_errors(form.glos) }}
+                                    </label>
+                                    <div class=" col-md-6 col-sm-6 col-xs-12 ">
+                                        {{ form_widget(form.glos.children[0], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.glos.children[0]) }}&nbsp;
+                                        {{ form_widget(form.glos.children[1], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.glos.children[1]) }}
+                                        {{ form_widget(form.glos.children[2], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.glos.children[2]) }}
+                                        {{ form_widget(form.glos.children[3], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.glos.children[3]) }}
+                                        {{ form_widget(form.glos.children[4], {'attr': {'class':'flat'} }) }}
+                                        {{ form_label(form.glos.children[4]) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-3">{{ form_label(form.dataWstapienia) }}  </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.dataWstapienia) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-3">{{ form_label(form.dataWystapienia) }}  </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        {{ form_widget(form.dataWystapienia) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       for="last-name">{{ form_label(form.opis) }}</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form.opis) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                       style="padding-top:0">{{ form_label(form.powiadomienia) }}
+                                    <span class="required">*</span>
+                                    {{ form_errors(form.powiadomienia) }}
+                                </label>
+                                <div class=" col-md-6 col-sm-6 col-xs-12 ">
+                                    {{ form_widget(form.powiadomienia.children[0], {'attr': {'class':'flat'} }) }}
+                                    {{ form_label(form.powiadomienia.children[0]) }}&nbsp;
+                                    {{ form_widget(form.powiadomienia.children[1], {'attr': {'class':'flat'} }) }}
+                                    {{ form_label(form.powiadomienia.children[1]) }}
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="reset" class="btn btn-primary">Wyczyść</button>
+                                    {{ form_widget(form.save) }}
+                                </div>
+                            </div>
+                            <div style="display:none;">
+                                {{ form_rest(form) }}
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

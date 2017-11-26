@@ -1,0 +1,228 @@
+{% extends "PanelBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Profil użytkownika</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+
+                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+
+                            <div class="profile_img">
+
+                                <!-- end of image cropping -->
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    <img class="img-responsive avatar-view"
+                                            {% if app.request.attributes.get('_route_params')['idUser'] %}
+                                                {% if user.zdjecie() %}
+                                                    src="{{ asset('assets'~ user.zdjecie()) }}"
+                                                {% elseif user.plec %}
+                                                    src="{{ asset('assets/zdjecia_osob/user.png') }}"
+                                                {% else %}
+                                                    src="{{ asset('assets/zdjecia_osob/default_female.jpg') }}"
+                                                {% endif %}
+                                            {% else %}
+                                                {% if app.user.zdjecie() %}
+                                                    src="{{ asset('assets'~ app.user.zdjecie()) }}"
+                                                {% elseif  app.user.plec %}
+                                                    src="{{ asset('assets/zdjecia_osob/user.png') }}"
+                                                {% else %}
+                                                    src="{{ asset('assets/zdjecia_osob/default_female.jpg') }}"
+                                                {% endif %}
+
+                                            {% endif %}
+                                            {#src="{{ app.request.attributes.get('_route_params')['idUser']? asset('assets/'~ user.zdjecie()):asset('assets/'~ app.user.zdjecie()) }}"#}
+                                         alt="Avatar"
+                                         >
+
+                                    <!-- Loading state -->
+                                    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+                                </div>
+                                <!-- end of image cropping -->
+
+                            </div>
+                            <h3>{{ user.__toString() }}</h3>
+
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <i class="fa fa-map-marker user-profile-icon"></i> {{ sekcja.sekcjaNazwa(user.sekcja) }}
+                                    , {{ statusik.statusNazwa(user.status) }}
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-briefcase user-profile-icon"></i> {{ user.telefon }}
+                                </li>
+
+                                <li class="m-top-xs">
+                                    <i class="fa fa-external-link user-profile-icon"></i>
+                                    <a target="_blank">{{ user.mail }}</a>
+                                </li>
+                            </ul>
+                            <a href=" {{ app.request.attributes.get('_route_params')['idUser']?path('userEdit',  {'idOsoba': user.id|urlencrypt }):path('userEdit') }}"
+                               class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edytuj</a>
+                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target=".bs-example-modal-lg">Zmień zdjęcie
+                            </button>
+                            <br/>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin">
+                                <thead>
+                                <tr>
+
+                                    <th>Nazwa</th>
+                                    <th>Wartość</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>Płeć</th>
+                                    <th>{{ plec.plecNazwa(user.plec)|raw }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Data urodzenia</th>
+                                    <th>{{ user.dataUrodzenia?user.dataUrodzenia|date('Y-m-d'):'' }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Miejsce urodzenia</th>
+                                    <th>{{ user.miejsceUrodzenia }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Imię ojca</th>
+                                    <th>{{ user.imieOjca }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Imię matki</th>
+                                    <th>{{ user.imieMatki }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Numer dowodu</th>
+                                    <th>{{ user.nrDowodu }}</th>
+                                </tr>
+                                <tr>
+                                    <th>PESEL</th>
+                                    <th>{{ user.pesel }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Numer legitymacji</th>
+                                    <th>{{ user.nrLegitymacji }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Numer paszportu</th>
+                                    <th>{{ user.nrPaszportu }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Data ważności paszportu</th>
+                                    <th>{{ user.dataPaszport?user.dataPaszport|date('Y-m-d'):'' }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Uczelnia</th>
+                                    <th>{{ user.uczelnia }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Wydział</th>
+                                    <th>{{ user.wydzial }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Rok studiów</th>
+                                    <th>{{ user.rok }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Adres</th>
+                                    <th>{{ user.adres|nl2br }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Wzrost</th>
+                                    <th>{{ user.wzrost }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Data wstąpienia</th>
+                                    <th>{{ user.dataWstapienia?user.dataWstapienia|date('Y-m-d'):'' }}</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Data wystąpienia</th>
+                                    <th>
+                                        {% if statusik.statusNazwa(user.status) == 'Wychowanek' %}
+                                            {{  user.dataWystapienia?user.dataWystapienia|date('Y-m-d'):'' }}
+                                        {% endif %}
+                                    </th>
+
+                                </tr>
+                                <tr>
+                                    <th>O sobie</th>
+                                    <th>{{ user.opis }}</th>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                            <!-- end user projects -->
+
+                        </div>
+
+                    </div>
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form data-parsley-validate class="form-horizontal form-label-left"
+                                      enctype="multipart/form-data" action="#"
+                                      method="post">
+                                    {{ form_row(form._token) }}
+                                    <div class="error">
+                                        {{ form_errors(form) }}
+                                    </div>
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel2">Zmień zdjęcie</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="first-name">{{ form_label(form.zdjecie) }} <span
+                                                        class="required">*</span>
+                                            </label>
+                                            {{ form_errors(form.zdjecie) }}
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.zdjecie) }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij
+                                        </button>
+                                        {{ form_widget(form.save) }}
+                                    </div>
+                                    <div style="display:none;">
+                                        {{ form_rest(form) }}
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

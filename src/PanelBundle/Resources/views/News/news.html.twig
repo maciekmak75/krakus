@@ -1,0 +1,60 @@
+{% extends "PanelBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Aktualności </h3>
+                {% if  is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('newsEdit') }}">
+                        <button type="button" class="btn btn-success">Dodaj news</button>
+                    </a>
+                    <a href="{{ path('newsArchive') }}">
+                        <button type="button" class="btn btn-success">Archiwum</button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% for dane in entities  if entities|length != 0 %}
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>{{ dane.tytul }}
+                                <small>{{ dane.dataGeneracji|date('d-m-Y H:i:s') }}</small>
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="dropdown">
+                                        <a href="{{ path('newsEdit', {'idNews':dane.id|urlencrypt}) }}" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    </li>
+                                    <li><a href="{{ path('newsDel', {'idNews':dane.id|urlencrypt}) }}"><i
+                                                    class="fa fa-close"></i></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                <!-- blockquote -->
+                                <blockquote>
+                                    <p>{{ dane.tresc|trans|nl2br }}</p>
+                                    <footer><cite title="Source Title">{{ dane.idUzytkownik.__toString() }}</cite>
+                                    </footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
